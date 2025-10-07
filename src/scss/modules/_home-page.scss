@@ -5,6 +5,7 @@
   background-repeat: no-repeat;
   width: 100%;
   height: 100vh;
+  overflow: hidden;
   .portfolio-text {
     position: absolute;
     width: 80%;
@@ -30,7 +31,46 @@
     top: 150px;
     right: 100px;
     mix-blend-mode: overlay;
+    opacity: 1;
+    animation: flicker 3s infinite;
+    filter: brightness(1);
   }
+
+  @keyframes flicker {
+    0%,
+    18%,
+    22%,
+    25%,
+    53%,
+    57%,
+    100% {
+      opacity: 1;
+      filter: brightness(1);
+    }
+
+    /* moments "off" un peu plus longs */
+    19%,
+    23%,
+    55% {
+      opacity: 0;
+      filter: brightness(0.5);
+    }
+
+    /* moments où la lampe est instable (mais pas totalement éteinte) */
+    20%,
+    24% {
+      opacity: 0.8;
+      filter: brightness(1.4);
+    }
+
+    /* petit moment de semi-luminosité, pour une impression plus naturelle */
+    54%,
+    56% {
+      opacity: 0.6;
+      filter: brightness(0.8);
+    }
+  }
+
   .home-lamp {
     position: absolute;
     width: 700px;
